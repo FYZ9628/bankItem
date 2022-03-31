@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.opct_notice.base.errormessage.mapper.ErrorMessageMapper">
+    <resultMap id="BaseResultMap" type="com.example.base.errormessage.entity.ErrorMessageDO">
+        <result column="error_info_code" property="errorInfoCode" />
+        <result column="error_code_name" property="errorCodeName" />
+        <result column="app_id" property="appId" />
+        <result column="error_code_type" property="errorCodeType" />
+        <result column="sync_flag" property="syncFlag" />
+        <result column="cn_desc" property="cnDesc" />
+        <result column="en_desc" property="enDesc" />
+        <result column="create_ts" property="createTs" />
+        <result column="update_ts" property="updateTs" />
+    </resultMap>
+
+    <sql id="Base_Column_list">
+        error_info_code,error_code_name,app_id,error_code_type,sync_flag,cn_desc,en_desc,create_ts,update_ts
+    </sql>
+
+    <sql id="error_message_column">
+        error_info_code,error_code_name,app_id,error_code_type,sync_flag,cn_desc,en_desc
+    </sql>
+
+    <!-- 获取所有数据  -->
+    <select id="list" resultMap="BaseResultMap" parameterType="com.example.base.errormessage.entity.ErrorMessageDO">
+        select <include refid="Base_Column_list" />
+        from yypt_error_message_param
+        where 2=2
+    </select>
+
+    <!-- 通过主键获取  -->
+    <select id="selectByKey" resultMap="BaseResultMap" parameterType="String">
+        select <include refid="Base_Column_list" />
+        from yypt_error_message_param
+        where error_info_code=#{errorInfoCode}
+    </select>
+
+    <insert id="create" parameterType="com.example.base.errormessage.entity.ErrorMessageDO">
+        insert into yypt_error_message_param (<include refid="error_message_column" />)
+        values (#{errorInfoCode},#{errorCodeName},#{appId},#{errorCodeType},#{syncFlag},
+                #{cnDesc},#{enDesc})
+    </insert>
+
+    <insert id="createByBatch" parameterType="com.example.base.errormessage.entity.ErrorMessageDO">
+        insert into yypt_error_message_param (<include refid="error_message_column" />)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.errorInfoCode},#{item.errorCodeName},#{item.appId},#{item.errorCodeType},#{item.syncFlag},
+            #{item.cnDesc},#{item.enDesc})
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.example.base.errormessage.entity.ErrorMessageDO">
+        update yypt_error_message_param
+        set error_code_name = #{error_code_name},
+            app_id = #{appId},
+            error_code_type = #{errorCodeType},
+            sync_flag = #{syncFlag},
+            cn_desc = #{cnDesc},
+            en_desc = #{enDesc}
+        where error_info_code=#{errorInfoCode}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.String">
+        delete from yypt_error_message_param where error_info_code=#{errorInfoCode}
+    </delete>
+
+    <select id="listBySyncFlag" resultMap="BaseResultMap" parameterType="String">
+        select <include refid="Base_Column_list" />
+        from yypt_error_message_param
+        where sync_flag &lt;&gt; #{syncFlag}
+    </select>
+</mapper>

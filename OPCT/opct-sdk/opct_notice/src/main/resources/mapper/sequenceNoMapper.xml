@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.opct_notice.base.sequence.mapper.SequenceNoMapper">
+    <resultMap id="BaseResultMap" type="com.example.opct_base.sequence.entity.SeqNoDO">
+        <result column="seq_type" property="seqType" />
+        <result column="seq_code" property="seqCode" />
+        <result column="seq_desc" property="seqDesc" />
+        <result column="cur_use_seq_no" property="curUseSeqNo" />
+        <result column="init_seq_no" property="initSeqNo" />
+        <result column="seq_no_step" property="seqNoStep" />
+        <result column="max_seq_no" property="maxSeqNo" />
+        <result column="early_warn_seq_no" property="earlyWarnSeqNo" />
+        <result column="create_ts" property="createTs" />
+        <result column="update_ts" property="updateTs" />
+    </resultMap>
+
+    <sql id="Base_Column_list">
+        seq_type,seq_code,seq_desc,cur_use_seq_no,init_seq_no,seq_no_step,max_seq_no,early_warn_seq_no,create_ts,update_ts
+    </sql>
+
+    <!-- 分页查询，每次500条数据   -->
+    <select id="listBySeqType" resultMap="BaseResultMap" parameterType="com.example.opct_base.sequence.entity.SeqNoDO">
+        select <include refid="Base_Column_list" />
+        from yypt_seq_no
+        where 2=2 and (#{seqType} is null or '' = #{seqType} or seq_type = #{seqType})
+    </select>
+</mapper>

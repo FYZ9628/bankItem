@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: bank-eureka
+  cloud:
+    client:
+      ipAddress: 127.0.0.1
+
+eureka:
+  instance:
+    prefer-ip-address: false
+    #自定义ip
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    hostname: ${spring.cloud.client.ipAddress}
+  client:
+    service-url:
+      defaultZone: http://${spring.cloud.client.ipAddress}:${server.port}/eureka/
+    #注册到其他eureka
+    register-with-eureka: false
+    #从其他eureka拉取信息
+    fetch-registry: false
+  server:
+    #自我保护
+    enable-self-preservation: false

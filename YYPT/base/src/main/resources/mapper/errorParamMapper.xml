@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.base.errormessage.mapper.ErrorParamMapper">
+    <resultMap id="BaseResultMap" type="com.example.base.errormessage.entity.ErrorMessageDO">
+        <result column="error_info_code" property="errorInfoCode" />
+        <result column="error_code_name" property="errorCodeName" />
+        <result column="app_id" property="appId" />
+        <result column="error_code_type" property="errorCodeType" />
+        <result column="sync_flag" property="syncFlag" />
+        <result column="cn_desc" property="cnDesc" />
+        <result column="en_desc" property="enDesc" />
+        <result column="create_ts" property="createTs" />
+        <result column="update_ts" property="updateTs" />
+    </resultMap>
+
+    <sql id="Base_Column_list">
+        error_info_code,error_code_name,app_id,error_code_type,sync_flag,cn_desc,en_desc,create_ts,update_ts
+    </sql>
+
+    <!-- 获取所有数据  -->
+    <select id="list" resultMap="BaseResultMap" parameterType="com.example.base.errormessage.entity.ErrorMessageDO">
+        select <include refid="Base_Column_list" />
+        from yypt_error_message_param
+        where 2=2
+    </select>
+
+    <!-- 通过主键获取  -->
+    <select id="selectByKey" resultMap="BaseResultMap" parameterType="String">
+        select <include refid="Base_Column_list" />
+        from yypt_error_message_param
+        where error_info_code=#{errorInfoCode}
+    </select>
+</mapper>
