@@ -11,7 +11,7 @@
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 31/03/2022 22:08:20
+ Date: 31/05/2022 20:05:22
 */
 
 SET NAMES utf8mb4;
@@ -42,7 +42,11 @@ CREATE TABLE `yypt_error_message_param` (
 -- Records of yypt_error_message_param
 -- ----------------------------
 BEGIN;
-INSERT INTO `yypt_error_message_param` VALUES ('OPCT1001', 'M_OPCT_PARAM_NOT_FOUND', 'OPCT', 'E', '0', '参数未找到', 'param not found', '2022-03-23 21:51:44.107377', '2022-03-23 21:52:15.112231');
+INSERT INTO `yypt_error_message_param` VALUES ('OPCT1001', 'M_OPCT_PARAM_NOT_FOUND', 'OPCT', 'E', '1', '参数未找到', 'param not found', '2022-03-23 21:51:44.107377', '2022-04-20 00:44:35.953041');
+INSERT INTO `yypt_error_message_param` VALUES ('OPCT1002', 'M_OPCT_PARAM_NOT_FOUND2', 'OPCT', 'E', '1', '参数未找到', 'param not found', '2022-03-23 21:51:44.107377', '2022-04-20 00:44:38.785108');
+INSERT INTO `yypt_error_message_param` VALUES ('OPCT1003', 'M_OPCT_PARAM_NOT_FOUND3', 'OPCT', 'E', '1', '参数未找到', 'param not found', '2022-03-23 21:51:44.107377', '2022-04-20 00:54:15.973086');
+INSERT INTO `yypt_error_message_param` VALUES ('OPCT1004', 'M_OPCT_PARAM_NOT_FOUND4', 'OPCT', 'E', '1', '参数未找到', 'param not found', '2022-03-23 21:51:44.107377', '2022-04-20 00:54:15.974139');
+INSERT INTO `yypt_error_message_param` VALUES ('OPCT1005', 'M_OPCT_PARAM_NOT_FOUND5', 'OPCT', 'E', '1', '参数未找到', 'param not found', '2022-03-23 21:51:44.107377', '2022-04-20 00:54:15.975220');
 COMMIT;
 
 -- ----------------------------

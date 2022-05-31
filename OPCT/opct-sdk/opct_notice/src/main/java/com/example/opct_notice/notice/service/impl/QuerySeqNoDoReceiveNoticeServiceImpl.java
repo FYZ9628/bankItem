@@ -33,7 +33,7 @@ public class QuerySeqNoDoReceiveNoticeServiceImpl implements DoReceiveNoticeServ
             int pageNum = reqBody.getCurrentPage() + 1;
             PageHelper.startPage(pageNum, 500);
             List<SeqNoDO> seqNoDOList = sequenceNoService.listBySeqType(reqBody.getSeqType());
-            PageInfo pageInfo = new PageInfo(seqNoDOList);
+            PageInfo<SeqNoDO> pageInfo = new PageInfo<SeqNoDO>(seqNoDOList);
             int pages = pageInfo.getPages();
 
             if (JudgeUtils.isNotNull(seqNoDOList)) {

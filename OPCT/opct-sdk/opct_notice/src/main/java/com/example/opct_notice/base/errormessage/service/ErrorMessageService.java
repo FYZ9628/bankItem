@@ -1,6 +1,8 @@
 package com.example.opct_notice.base.errormessage.service;
 
 import com.example.base.errormessage.entity.ErrorMessageDO;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

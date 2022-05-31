@@ -9,8 +9,10 @@ import com.example.opct_notice.notice.dto.NoticeRespDTO;
 import com.example.opct_notice.notice.entity.ErrorMessageReqBody;
 import com.example.opct_notice.notice.enums.NoticeAppIdEnum;
 import com.example.opct_notice.notice.service.DoSendNoticeService;
+import com.example.opct_notice.notice.utils.FeignServiceUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -21,6 +23,9 @@ import java.util.List;
 @Component(value = NoticeConst.ERROR_MSG_OPCT_DO_SEND_NOTICE)
 public class ErrorMessageOpceDoSendNoticeServiceImpl implements DoSendNoticeService<ErrorMessageReqBody, Boolean> {
     private static final Logger LOGGER = LoggerFactory.getLogger(ErrorMessageOpceDoSendNoticeServiceImpl.class);
+
+    @Autowired
+    private FeignServiceUtil feignServiceUtil;
 
     /**
      * 发送通知
@@ -43,10 +48,11 @@ public class ErrorMessageOpceDoSendNoticeServiceImpl implements DoSendNoticeServ
 //            request.getHead().setServcCode(notice, NoticeRespDTO.class);
             do {
 //                response = RpcUtil.execute(request, NoticeRespDTO.class);
+                response = feignServiceUtil.getFeignServiceByAppId(notice.getAppId()).receiveNotice(request);
                 i++;
             } while ((JudgeUtils.isNull(response) || JudgeUtils.isNull(response.getBody()) || !response.getBody()) && i < 5);
 
-            if (JudgeUtils.isNull(response) || JudgeUtils.isNotNull(response.getBody()) || !response.getBody()) {
+            if (JudgeUtils.isNotNull(response) && JudgeUtils.isNotNull(response.getBody()) && !response.getBody()) {
                 flag = false;
                 builder.append(notice.getAppId()).append(NoticeConst.COMMA);
             }

@@ -46,17 +46,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.0.5</version>
-        </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId></groupId>-->
-<!--            <artifactId>mybatis</artifactId>-->
-<!--        </dependency>-->
-
-        <dependency>
             <groupId>com.example</groupId>
             <artifactId>opct_base</artifactId>
             <version>0.0.1-SNAPSHOT</version>

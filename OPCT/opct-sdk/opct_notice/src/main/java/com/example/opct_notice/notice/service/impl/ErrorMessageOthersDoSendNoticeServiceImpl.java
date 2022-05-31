@@ -30,7 +30,7 @@ public class ErrorMessageOthersDoSendNoticeServiceImpl implements DoSendNoticeSe
         do {
 //            response = RpcUtil.execute(request, NoticeRespDTO.class);
             i++;
-        } while ((JudgeUtils.isNotNull(response) || JudgeUtils.isNull(response.getBody()) || !response.getBody()) && i<5);
+        } while ((JudgeUtils.isNull(response) || JudgeUtils.isNull(response.getBody()) || !response.getBody()) && i<5);
 
         return response;
     }

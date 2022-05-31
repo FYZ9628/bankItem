@@ -8,8 +8,8 @@ import com.example.opct_notice.notice.dto.NoticeRespDTO;
 import com.example.opct_notice.notice.entity.QuerySeqNoReqBody;
 import com.example.opct_notice.notice.entity.QuerySeqNoRespBody;
 import com.example.opct_notice.notice.enums.NoticeAppIdEnum;
-import com.example.opct_notice.notice.feignclient.FeignService;
 import com.example.opct_notice.notice.service.DoSendNoticeService;
+import com.example.opct_notice.notice.utils.FeignServiceUtil;
 import com.example.opct_notice.notice.utils.NoticeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,7 +21,7 @@ import java.util.List;
 public class QuerySeqNoDoSendNoticeServiceImpl implements DoSendNoticeService<QuerySeqNoReqBody, QuerySeqNoRespBody> {
 
     @Autowired
-    private FeignService feignService;
+    private FeignServiceUtil feignServiceUtil;
 
     @Override
     public NoticeRespDTO<QuerySeqNoRespBody> doSendNotice(NoticeReqDTO<QuerySeqNoReqBody> request) throws Exception {
@@ -59,7 +59,14 @@ public class QuerySeqNoDoSendNoticeServiceImpl implements DoSendNoticeService<Qu
             int i = 0;
             do {
 //                response = RpcUtil.execute(request, NoticeRespDTO.class);
-                response = feignService.opctReceiveNotice(request);
+
+//                if (feignServiceUtil.getCurrentFeignService() != null) {
+//                    response = feignServiceUtil.getCurrentFeignService().receiveNotice(request);
+//                }
+                if (feignServiceUtil.getFeignServiceByAppId(request.getBody().getAppId()) != null) {
+                    response = feignServiceUtil.getFeignServiceByAppId(request.getBody().getAppId()).receiveNotice(request);
+                }
+//                response = opctFeignService.receiveNotice(request);
                 i++;
                 lastPage = true;
             } while ((JudgeUtils.isNull(response) || JudgeUtils.isNull(response.getBody())) && i < 5);

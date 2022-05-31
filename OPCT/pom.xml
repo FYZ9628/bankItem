@@ -33,6 +33,7 @@
     <modules>
         <module>opct-online</module>
         <module>opct-sdk</module>
+        <module>opct-batch</module>
     </modules>
 
     <dependencyManagement>

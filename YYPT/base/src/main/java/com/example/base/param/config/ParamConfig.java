@@ -162,10 +162,10 @@ public class ParamConfig {
 
     private Class<? extends CacheDataKind> createAndLoadClass() throws NotFoundException, CannotCompileException {
         ClassPool clazzPool = ClassPool.getDefault();
-        CtClass ctClzz = clazzPool.makeClass("com.cgb.corebank.cachedatakind." + paramName);
+        CtClass ctClzz = clazzPool.makeClass("com.example.base.cache.CacheDataKind." + paramName);
         ctClzz.setSuperclass(clazzPool.get(ParamCacheKind.class.getName()));
         ctClzz.addConstructor(CtNewConstructor.defaultConstructor(ctClzz));
-        return ctClzz.toClass();
+        return (Class<? extends CacheDataKind>) ctClzz.toClass();
     }
 
     public static void saveWarpClass(Class<?> clazz1) {

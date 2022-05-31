@@ -20,7 +20,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Component
@@ -63,13 +62,13 @@ public class SyncErrorMessageThread extends AbstractGeneralNoticeService impleme
                 } else {
                     //从其他中心同步到运营中心
                     request.setNoticeServiceEnum(NoticeServiceEnum.ERROR_MSG_OTHERS_SEND);
-                    syncChroService(errorMessageDOList, request);
-                    PageHelper.startPage(++pageNum, 100, false);
-                    errorMessageDOList = errorMessageService.listBySyncFlag(syncFlag);
                 }
+                syncChroService(errorMessageDOList, request);
+                PageHelper.startPage(++pageNum, 100, false);
+                errorMessageDOList = errorMessageService.listBySyncFlag(syncFlag);
                 if (pages > 0) {
                     //更新缓存
-                    paramCenterService.updateNodeInfo(ErrorMessageDO.PARAM_NAME, NoticeConst.MAIN_NODE);
+//                    paramCenterService.updateNodeInfo(ErrorMessageDO.PARAM_NAME, NoticeConst.MAIN_NODE);
                 }
             }
         } catch (Exception e) {

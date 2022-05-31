@@ -1,6 +1,5 @@
 package com.example.opctonline.controller.impl;
 
-import com.example.base.utils.JudgeUtils;
 import com.example.opct_notice.notice.dto.NoticeReqDTO;
 import com.example.opct_notice.notice.dto.NoticeRespDTO;
 import com.example.opct_notice.notice.service.impl.AbstractGeneralNoticeService;
@@ -17,12 +16,4 @@ public class NoticeControllerImpl extends AbstractGeneralNoticeService implement
         return doReceiveNotice(request);
     }
 
-//    @RequestMapping("/getTest")
-//    public String test() {
-//        int int_a = 0;
-//        if (JudgeUtils.isZero(int_a)) {
-//            return "test 00000";
-//        }
-//        return "test hello";
-//    }
 }

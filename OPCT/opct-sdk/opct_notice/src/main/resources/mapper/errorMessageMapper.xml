@@ -52,7 +52,7 @@
 
     <update id="update" parameterType="com.example.base.errormessage.entity.ErrorMessageDO">
         update yypt_error_message_param
-        set error_code_name = #{error_code_name},
+        set error_code_name = #{errorCodeName},
             app_id = #{appId},
             error_code_type = #{errorCodeType},
             sync_flag = #{syncFlag},

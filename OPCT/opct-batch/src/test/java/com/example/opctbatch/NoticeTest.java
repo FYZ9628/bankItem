@@ -20,7 +20,8 @@ public class NoticeTest {
 
     @Test
     public void testSeqNo() {
-        String appId = "OPCT";
+//        String appId = "OPCT";
+        String appId = "SVCT";
         String seqType = "FYZ";
         System.out.println(appId);
         QuerySeqNoReqBody reqBody = new QuerySeqNoReqBody();
@@ -33,6 +34,8 @@ public class NoticeTest {
         List<SeqNoDO> seqNoDOList = seqNoService.getAllSeqNo(appId, seqType);
         if (JudgeUtils.isNotNull(seqNoDOList)) {
             System.out.println(seqNoDOList.toString());
+            System.out.println(seqNoDOList.size());
+            System.out.println("测试seqNo");
         }
     }
 }

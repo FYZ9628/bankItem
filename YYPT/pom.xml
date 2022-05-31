@@ -59,24 +59,35 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.0.5</version>
+            <version>3.5.1</version>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.mybatis.spring.boot</groupId>-->
+<!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
+<!--            <version>2.2.2</version>-->
+<!--        </dependency>-->
+
+<!--   用这个依赖时分页失效了     -->
+<!--    解决以下报错    -->
+<!--  不兼容的类型: java.lang.Class<capture#1, 共 ?>无法转换为java.lang.Class<? extends com.example.base.cache.CacheDataKind>      -->
+<!--        <dependency>-->
+<!--            <groupId>com.github.pagehelper</groupId>-->
+<!--            <artifactId>pagehelper</artifactId>-->
+<!--            <version>5.3.0</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <version>5.3.0</version>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.4.1</version>
         </dependency>
+
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.7.22</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.github.duorourou</groupId>-->
-<!--            <artifactId>caffeine-cache-starter</artifactId>-->
-<!--            <version>1.0.2.RELEASE</version>-->
-<!--        </dependency>-->
 
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
